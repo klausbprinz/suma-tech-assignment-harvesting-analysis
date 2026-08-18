@@ -1,3 +1,6 @@
+# by Sascha Szott - https://github.com/saschaszott/suma-tech
+# some additions/changes by me
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt

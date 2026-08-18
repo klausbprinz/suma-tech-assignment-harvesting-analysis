@@ -1,3 +1,6 @@
+# by Sascha Szott - https://github.com/saschaszott/suma-tech
+# some additions/changes by me
+
 import os
 
 def tokenize_words(input_file, output_file, min_token_length=4):

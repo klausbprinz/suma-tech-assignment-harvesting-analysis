@@ -1,3 +1,6 @@
+# by Sascha Szott - https://github.com/saschaszott/suma-tech
+# some additions/changes by me
+
 import requests
 import re
 import os
