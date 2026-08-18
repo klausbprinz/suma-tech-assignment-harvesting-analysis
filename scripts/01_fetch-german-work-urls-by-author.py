@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 import os
 
-def fetch_books_urls_by_author_id(author_id):
+def fetch_book_urls_by_author_id(author_id):
     """
     Gibt eine Liste von URLs für alle Werke des Autors mit der angegebenen Autor-ID aus dem Project Gutenberg zurück.
     Es werden hierbei nur Werke berücksichtigt, die in deutscher Sprache verfügbar sind und bei denen der Autor
@@ -14,7 +14,7 @@ def fetch_books_urls_by_author_id(author_id):
     - author_id (int): Die ID des Autors im Project Gutenberg, für den die URLs der Werke abgerufen werden sollen.
     """
 
-    # URL der HTML-Seite mit allen deutschsprachigen E-Books
+    # URL der HTML-Seite im Project Gutenberg mit allen deutschsprachigen E-Books
     URL = "https://www.gutenberg.org/browse/languages/de"
 
     # HTML-Seite abrufen
@@ -36,13 +36,13 @@ def fetch_books_urls_by_author_id(author_id):
             break
 
     if not author_section:
-        print("Autor-Abschnitt im HTML-Code nicht gefunden.")
+        print(f"Autor-Abschnitt für Autor-ID {author_id} im HTML-Code nicht gefunden.")
         return []
 
     # Die direkt auf <h2> folgende <ul>-Liste durchsuchen
     book_list = author_section.find_next_sibling("ul")
     if not book_list:
-        print("Keine Liste mit Werken des Autors gefunden.")
+        print(f"Keine Liste mit Werken des Autors mit ID {author_id} im HTML-Code gefunden.")
         return []
 
     # Alle <li>-Elemente extrahieren, die einen Link enthalten
@@ -69,7 +69,12 @@ if __name__ == "__main__":
         {"id": 1995,    "name": "Humboldt"},
         {"id": 1765,    "name": "Fontane"},
         {"id": 846,     "name": "Rilke"},
+        {"id": 990,     "name": "Lessing"},
+        {"id": 2128,    "name": "Storm"},
+        {"id": 53,      "name": "Twain"},
+        {"id": 845,     "name": "Wieland"},
     ]
+
 
     # addition here
     scriptDir = Path(__file__).resolve().parent                 # where the script lives
@@ -81,7 +86,7 @@ if __name__ == "__main__":
 
     overall_num_of_ebook_urls = 0
     for author in authors:
-        book_urls = fetch_books_urls_by_author_id(author["id"])
+        book_urls = fetch_book_urls_by_author_id(author["id"])
         print(f"Es wurden {len(book_urls)} E-Book-URLs von Werken des Autors {author['name']} gefunden.")
         overall_num_of_ebook_urls += len(book_urls)
 
