@@ -33,15 +33,11 @@ Suma-tech assignment one. See `docs/assignment/README.md`.
 
 ```text
 .
-├── assets/                     # Screenshots, process diagrams, and images
-├── data/                       # Local sample data files
-├── docs/api/                   # Technical documentation
-├── notebooks/                  # Jupyter notebooks
-├── scripts/                    # Core Python or automation scripts
-├── src/                        # Package or main scripts
-├── tests/                      # Unit tests and testing notebooks
+├── data/german-works/          # Data folder
+├── docs/assignment/            # Assignment README
+├── notebooks/                  # Scratchpads
+├── scripts/                    # Core python scripts
 ├── environment.yaml            # Information on used environment
-├── analysis_notebook.ipynb     # Primary playground/analysis notebook
 └── README.md
 ```
 
