@@ -33,9 +33,9 @@ Suma-tech assignment one. See `docs/assignment/README.md`.
 
 ```text
 .
-├── data/german-works/          # Data folder
-├── docs/assignment/            # Assignment README
-├── notebooks/                  # Scratchpads
+├── data/                       # Data folder (german-works and similarity)
+├── docs/assignment/            # Assignment README, solution CSV and PNG files
+├── notebooks/                  # Assignment solution notebook
 ├── scripts/                    # Core python scripts (most of them by Sascha Szott `https://github.com/saschaszott/suma-tech`, some additions/changes by me)
 ├── environment.yaml            # Information on used environment
 └── README.md
