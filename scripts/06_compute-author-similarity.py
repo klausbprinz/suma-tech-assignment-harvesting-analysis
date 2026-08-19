@@ -36,7 +36,6 @@ def compute_similarity(terms_A, terms_B, mode="jaccard"):
 
 if __name__ == "__main__":
 
-
     # change here
     scriptDir = Path(__file__).resolve().parent                 # where the script lives
     baseDirP = scriptDir.parent / "data/german-works"
@@ -44,7 +43,6 @@ if __name__ == "__main__":
 
     # point base_dir to the new Path as string
     input_dir = str(baseDirP)
-
 
     mode = "jaccard"  # Ähnlichkeitsmodus für Term-Mengen: "jaccard", "dice" oder "otsuka-ochiai"
     similarity_matrix = {}
@@ -72,7 +70,12 @@ if __name__ == "__main__":
             similarity_matrix[(author_A, author_B)] = similarity
 
     # Ausgabe der Ähnlichkeitswerte zwischen den Autoren als CSV-Datei
-    with open(f"author-similarity_{mode}.csv", "w", encoding="utf-8") as csv_file:
+    
+    # change here
+    scriptDir = Path(__file__).resolve().parent                 # where the script lives
+    similarityP = scriptDir.parent / "data/similarity"    
+
+    with open(similarityP / f"author-similarity_{mode}.csv", "w", encoding="utf-8") as csv_file:
         for (author_A, author_B), similarity in similarity_matrix.items():
             csv_file.write(f"{os.path.basename(author_A).split('.')[0]},{os.path.basename(author_B).split('.')[0]},{similarity:.4f}\n")
 
