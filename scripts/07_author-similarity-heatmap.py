@@ -5,6 +5,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from pathlib import Path
+
 def build_matrix(df: pd.DataFrame) -> pd.DataFrame:
     df = df[["Author A", "Author B", "Similarity"]].copy()
 
@@ -52,7 +54,13 @@ def draw_heatmap(matrix: pd.DataFrame, output: str, mode: str) -> None:
 
 if __name__ == "__main__":
     mode = "jaccard"  # Ähnlichkeitsmodus für Term-Mengen: "jaccard", "dice" oder "otsuka-ochiai"
-    input_file = f"author-similarity_{mode}.csv"
+
+    # change here
+    scriptDir = Path(__file__).resolve().parent                 # where the script lives
+    similarityP = scriptDir.parent / "data/similarity"
+    input_file = similarityP / f"author-similarity_{mode}.csv"
+
+
     df = pd.read_csv(input_file, names=["Author A", "Author B", "Similarity"])
     matrix = build_matrix(df)
-    draw_heatmap(matrix, f"author-similarity_{mode}.png", mode)
+    draw_heatmap(matrix, similarityP / f"author-similarity_{mode}.png", mode)
