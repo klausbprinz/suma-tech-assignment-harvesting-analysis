@@ -11,5 +11,7 @@ dependencies:
 - pyyaml
 - requests
 - seaborn
+- ipykernel
+- jupyter
 - pip:
   - shiboken6==6.11.1
