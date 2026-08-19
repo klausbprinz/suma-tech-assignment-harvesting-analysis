@@ -3,6 +3,8 @@
 
 import os
 
+from pathlib import Path
+
 def tokenize_words(input_file, output_file, min_token_length=4):
     """
     Liest den bereinigten Text (ohne Header und Footer des Project Gutenberg) aus der übergebenen Datei ein, tokenisiert
@@ -45,7 +47,16 @@ def tokenize_words(input_file, output_file, min_token_length=4):
                 outfile.write(token + "\n") # jedes Token in neue Zeile schreiben
 
 if __name__ == "__main__":
-    input_dir = "german-works"
+
+    # change here
+    scriptDir = Path(__file__).resolve().parent                 # where the script lives
+    baseDirP = scriptDir.parent / "data/german-works"
+    baseDirP.mkdir(exist_ok=True)
+
+    # point base_dir to the new Path as string
+    input_dir = str(baseDirP)
+
+
     # Suche in Autorenverzeichnissen nach Textdateien mit Endung ".txt.clean" (von Footer und Header bereinigte Dateien)
     num_of_files_processed = 0
     for author_dir in os.listdir(input_dir):

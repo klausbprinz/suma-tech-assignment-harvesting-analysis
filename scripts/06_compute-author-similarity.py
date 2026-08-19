@@ -3,6 +3,8 @@
 
 import os
 
+from pathlib import Path
+
 def compute_similarity(terms_A, terms_B, mode="jaccard"):
     """
     Berechnet die Ähnlichkeit zwischen zwei Autoren basierend auf den zugehörigen Term-Mengen ihrer Werke.
@@ -33,7 +35,17 @@ def compute_similarity(terms_A, terms_B, mode="jaccard"):
     return similarity
 
 if __name__ == "__main__":
-    input_dir = "german-works"
+
+
+    # change here
+    scriptDir = Path(__file__).resolve().parent                 # where the script lives
+    baseDirP = scriptDir.parent / "data/german-works"
+    baseDirP.mkdir(exist_ok=True)
+
+    # point base_dir to the new Path as string
+    input_dir = str(baseDirP)
+
+
     mode = "jaccard"  # Ähnlichkeitsmodus für Term-Mengen: "jaccard", "dice" oder "otsuka-ochiai"
     similarity_matrix = {}
     file_list = []

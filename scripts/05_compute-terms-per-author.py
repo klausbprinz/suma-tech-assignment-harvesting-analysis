@@ -4,6 +4,8 @@
 import os
 from nltk.stem import SnowballStemmer
 
+from pathlib import Path
+
 def compute_terms_per_author(input_dir, stemmer=None):
     """
     Berechnet die Menge der Terme in allen Werken eines Autors, indem die Tokens aus den ".tokens"-Dateien gelesen
@@ -41,6 +43,18 @@ def compute_terms_per_author(input_dir, stemmer=None):
                     f.write(term + "\n")
 
 if __name__ == "__main__":
-    input_dir = "german-works"
-    stemmer = None # oder SnowballStemmer("german"), falls Stemming gewünscht ist
+
+
+    # change here
+    scriptDir = Path(__file__).resolve().parent                 # where the script lives
+    baseDirP = scriptDir.parent / "data/german-works"
+    baseDirP.mkdir(exist_ok=True)
+
+    # point base_dir to the new Path as string
+    input_dir = str(baseDirP)
+
+
+    #stemmer = None # oder SnowballStemmer("german"), falls Stemming gewünscht ist
+    stemmer = SnowballStemmer("german")
+
     compute_terms_per_author(input_dir, stemmer)
