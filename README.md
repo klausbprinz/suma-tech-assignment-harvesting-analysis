@@ -4,7 +4,7 @@ author: "Klaus Prinz"
 domain: "learning"
 status: "active"
 createdDate: "2026-08-18"
-tags: [web scraping, string manipulation, text manipulation, tokenization]    # TODO update
+tags: [web scraping, string manipulation, text manipulation, tokenization, token, term, similarity, jaccard, ]    # TODO update
 requester: ""
 ticketId: ""
 ---
